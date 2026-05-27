@@ -1,0 +1,27 @@
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use(express.static("public"));
+
+function generateSKU(keyword){
+  return {
+    title: `${keyword} Luxury Jewelry Custom Design`,
+    sku: `${keyword.slice(0,3).toUpperCase()}-${Math.floor(Math.random()*9999)}`,
+    sellingPoints: [
+      "Premium stainless steel",
+      "Waterproof & durable",
+      "Perfect gift",
+      "Emotional custom design"
+    ]
+  };
+}
+
+app.post("/api/generate",(req,res)=>{
+  const {keyword} = req.body;
+  res.json(generateSKU(keyword));
+});
+
+app.listen(3000,()=>console.log("http://localhost:3000"));

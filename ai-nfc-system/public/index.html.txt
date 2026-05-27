@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AI SKU</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>AI SKU Generator</h1>
+
+<input id="keyword" placeholder="输入关键词">
+<button onclick="gen()">生成</button>
+
+<div id="result"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
