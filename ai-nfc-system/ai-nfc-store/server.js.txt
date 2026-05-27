@@ -1,0 +1,28 @@
+const express = require("express");
+const path = require("path");
+const app = express();
+
+app.use(express.json());
+app.use(express.static("public"));
+
+// AI接口
+app.post("/api/generate", async (req, res) => {
+  const { keyword } = req.body;
+
+  // 模拟AI生成（后面可以接 OpenAI）
+  const result = {
+    title: `Personalized ${keyword} NFC Jewelry`,
+    selling_points: [
+      "Custom emotional memory engraving",
+      "Tap NFC to view private page",
+      "Minimal luxury stainless steel design",
+      "Perfect gift for relationships"
+    ],
+    description: `This ${keyword} NFC jewelry preserves emotional memories and unlocks a hidden digital page when tapped.`
+  };
+
+  res.json(result);
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log("Server running on " + PORT));

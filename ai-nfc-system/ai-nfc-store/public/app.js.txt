@@ -1,0 +1,19 @@
+async function generate() {
+  const keyword = document.getElementById("keyword").value;
+
+  const res = await fetch("/api/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ keyword })
+  });
+
+  const data = await res.json();
+
+  document.getElementById("result").innerHTML = `
+    <h2>${data.title}</h2>
+    <p>${data.description}</p>
+    <ul>
+      ${data.selling_points.map(p => `<li>${p}</li>`).join("")}
+    </ul>
+  `;
+}
